@@ -7,13 +7,31 @@ const knex = require('knex')(DATABASE);
 process.stdout.write('\x1Bc');
 
 // Sample select 
-knex
-  .select()
-  .from('restaurants')
-  .limit(2)
-  .debug(true)
-  .then(results => console.log(results));
+// knex
+//   .select()
+//   .from('restaurants')
+//   .then(results => console.log(JSON.stringify(results)));
 
+// knex
+//   .select()
+//   .from('restaurants')
+//   .where({cuisine: 'Italian'})
+//   .then(results => console.log(JSON.stringify(results)));
+
+
+// knex
+//   .select()
+//   .from('restaurants')
+//   .where({ cuisine: 'Italian' })
+//   .limit(10)
+//   .then(results => console.log(results));
+
+
+knex
+  .count()
+  .from('restaurants')
+  .where({ cuisine: 'Thai' })
+  .then(results => console.log(results));
 
 // Destroy the connection pool
 knex.destroy().then(() => {
